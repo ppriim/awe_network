@@ -32,4 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '.swiper-button-prev',
         },
     });
+
+    // Swiper ของ Section 5: Testimonials
+    new Swiper('.testimonial-swiper', {
+        loop: false,
+        slidesPerView: 1,
+        centeredSlides: true,
+        grabCursor: true,
+        navigation: {
+            nextEl: '.testimonial-button-next',
+            prevEl: '.testimonial-button-prev',
+        },
+        pagination: {
+            el: '.testimonial-pagination',
+            clickable: true,
+        },
+    });
 });
+
+
+

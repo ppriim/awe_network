@@ -14,3 +14,154 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+body {
+    font-family: 'Prompt', sans-serif;
+}
+
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE10+, Edge */
+    overflow-x: hidden; /* ป้องกันแนวนอน */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+
+.swiper-pagination {
+    bottom: -4px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+    background: white !important;
+    opacity: 0.4;
+    margin: 0 6px !important;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 18px !important;
+    color: white !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 16px !important;
+    height: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10;
+}
+
+/* ========== Section 4 Styles ========== */
+:root {
+    --gray-2: #e7eaed;
+    --size-4: 1rem;
+    --size-content-3: 90rem;
+    --font-size-fluid-1: clamp(1rem, 3vw, 2rem);
+    --size-3: 2rem;
+}
+
+.track-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    max-inline-size: var(--size-content-3);
+    -webkit-mask: linear-gradient(90deg,
+            transparent 0,
+            black 15% 85%,
+            transparent) 0 50% / 100% calc(100% - (2 * var(--size-4))) no-repeat,
+        linear-gradient(0deg, black, black) 50% 0 / 100% var(--size-4) no-repeat,
+        linear-gradient(0deg, black, black) 50% 100% / 100% var(--size-4) no-repeat;
+}
+
+.track {
+    cursor: grab;
+    transition: scroll-behavior 0.3s ease;
+    scroll-behavior: smooth;
+    --size: clamp(200px, 59vmin, 50rem);
+    height: var(--size);
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    gap: var(--size-4);
+    list-style-type: none;
+    margin: 0;
+    padding: var(--size-4) 33%;
+    scroll-snap-type: x mandatory;
+    -webkit-mask: radial-gradient(#0000 0 30%, #000 30.5%) 50% calc(var(--size) * 0.5) / 300% 100%,
+        linear-gradient(0deg, black, black) 50% 0 / 100% var(--size-4) no-repeat,
+        linear-gradient(0deg, black, black) 50% 100% / 100% var(--size-4) no-repeat !important;
+}
+
+.track.active {
+    cursor: grabbing;
+}
+
+.track::-webkit-scrollbar {
+    height: 6px;
+    width: -20px;
+    transform: translateY(-50%);
+}
+
+.track::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    /* สีของ scroll bar */
+    border-radius: 10px;
+}
+
+.track::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* พื้นหลัง track */
+    border-radius: 10px;
+}
+
+
+.track__item {
+    height: 100%;
+    aspect-ratio: 1;
+    scroll-snap-align: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #ccc;
+    flex-shrink: 0;
+}
+
+.track__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* section 5 */
+/* Testimonials Section - Custom Swiper Style */
+.testimonial-swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.testimonial-button-prev,
+.testimonial-button-next {
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.testimonial-pagination .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+}
+
+.testimonial-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+}
