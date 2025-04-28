@@ -29,6 +29,9 @@ body::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
 
+#flash-overlay {
+    transition: opacity 0.8s ease;
+}
 
 .swiper-pagination {
     bottom: -4px !important;
@@ -55,10 +58,11 @@ body::-webkit-scrollbar {
 
 .swiper-button-prev,
 .swiper-button-next {
-    width: 16px !important;
+    /* width: 16px !important;
     height: 16px !important;
     top: 50% !important;
-    transform: translateY(-50%) !important;
+    transform: translateY(-50%) !important; */
+    margin-top: calc(0px - (var(--swiper-navigation-size) / 2.5)) !important;
     z-index: 10;
 }
 
@@ -144,22 +148,25 @@ body::-webkit-scrollbar {
 }
 
 /* section 5 */
-/* Testimonials Section - Custom Swiper Style */
-.testimonial-swiper {
-    width: 100%;
-    overflow: hidden;
+.testimonial-button-prev::after,
+.testimonial-button-next::after {
+    font-size: 20px !important;
+    color: #112250 !important;
 }
 
-.testimonial-button-prev,
-.testimonial-button-next {
-    color: white;
-    width: 30px;
-    height: 30px;
+.testimonial-swiper {
+    height: 430px;
+}
+
+.testimonial-swiper video {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 .testimonial-pagination .swiper-pagination-bullet {
-    background: white;
-    opacity: 0.5;
+    background: #112250;
+    opacity: 0.4;
 }
 
 .testimonial-pagination .swiper-pagination-bullet-active {
