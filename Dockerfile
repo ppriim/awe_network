@@ -1,7 +1,13 @@
-# ใช้ PHP official image
+# Stage 1: Build frontend assets
+FROM node:20 as node
+WORKDIR /var/www
+COPY . .
+RUN npm install && npm run build
+
+# Stage 2: Laravel backend + final image
 FROM php:8.2-cli
 
-# ติดตั้ง system dependencies และ PHP extensions ที่ Laravel ต้องใช้
+# ติดตั้ง PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -21,30 +27,29 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # ตั้ง working directory
 WORKDIR /var/www
 
-# คัดลอกไฟล์โปรเจกต์เข้า container
+# คัดลอกไฟล์โปรเจกต์
 COPY . .
 
-# ติดตั้ง dependency ของ Laravel
+# ติดตั้ง Laravel dependency
 RUN composer install --no-dev --optimize-autoloader
 
-# ตั้ง permission storage และ bootstrap/cache
-RUN chmod -R 775 storage bootstrap/cache
-
-# เปิด Port 8080 สำหรับ Railway
-EXPOSE 8080
-
-# Build frontend assets
-COPY --from=node /var/www/node_modules ./node_modules
+# ดึงไฟล์ที่ถูก build จาก stage node
 COPY --from=node /var/www/public ./public
 COPY --from=node /var/www/resources ./resources
+COPY --from=node /var/www/node_modules ./node_modules
 COPY --from=node /var/www/package.json ./package.json
 COPY --from=node /var/www/vite.config.js ./vite.config.js
 
-RUN npm install && npm run build
-
+# เคลียร์ config / cache
 RUN php artisan config:clear \
  && php artisan route:clear \
  && php artisan view:clear
 
-# 🛠 แก้ตรงนี้เพื่อ serve public/
+# เปิดสิทธิ์ storage
+RUN chmod -R 775 storage bootstrap/cache
+
+# เปิด port ให้ Railway
+EXPOSE 8080
+
+# Serve ผ่าน PHP Built-in server
 CMD php -S 0.0.0.0:${PORT:-8080} -t public
