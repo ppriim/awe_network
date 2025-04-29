@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Home')
 
 @section('content')
     {{-- 🎬 Hero Section --}}
@@ -112,7 +113,7 @@
         class="relative z-50 py-16 px-4 text-white h-screen overflow-hidden bg-[#F5F0E9] flex flex-col items-center justify-center text-center">
         <div class="mb-8">
             <h2 class="text-4xl md:text-5xl font-bold"
-                style="font-family: 'IBM Plex Sans Thai', sans-serif; font-weight: 200; color: #112250;">
+                style="font-family: 'Playfair', serif; font-weight: 200; color: #112250;">
                 Our recent work
             </h2>
         </div>
@@ -163,17 +164,16 @@
                                     playsinline loop></video>
                             </div>
                         @endforeach
+                        {{-- Pagination (Dot ทับวีดีโอกลางล่าง) --}}
+                        <div class="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-50"></div>
                     </div>
-                    {{-- Navigation ลูกศร (อยู่ขอบจอ ซ้าย-ขวา) --}}
-                    <div class="swiper-button-prev fixed left-2 top-1/2 -translate-y-1/2 z-50"></div>
-                    <div class="swiper-button-next fixed right-2 top-1/2 -translate-y-1/2 z-50"></div>
-
-                    {{-- Pagination (Dot ทับวีดีโอกลางล่าง) --}}
-                    <div class="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-20"></div>
                 </div>
             </div>
 
-        </div>
 
+        </div>
+        {{-- Navigation ลูกศร (อยู่ขอบจอ ซ้าย-ขวา) --}}
+        <div class="swiper-button-prev fixed left-2 top-1/2 -translate-y-1/2 z-50" style="color: #F5F0E9"></div>
+        <div class="swiper-button-next fixed right-2 top-1/2 -translate-y-1/2 z-50" style="color: #F5F0E9"></div>
     </section>
 @endsection

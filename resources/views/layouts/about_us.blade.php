@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts: Prompt -->
+    <title>@yield('title', 'About Us')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,10 +11,11 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js']) {{-- ใช้กับ Vite --}}
-</head>
 
-<body class="antialiased bg-white text-gray-800">
+    @vite(['resources/css/about.css', 'resources/js/about.js'])
+
+</head>
+<body class="font-sans antialiased">
     <header class="relative z-100">
         @include('partials.hambar')
     </header>
@@ -25,14 +24,12 @@
         @yield('content')
     </main>
 
-    <footer class="relative z-50">
-        @include('partials.footer')
-    </footer>
+    @include('partials.footer')
+
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
 </body>
-
 </html>
