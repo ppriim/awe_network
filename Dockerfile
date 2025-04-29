@@ -33,11 +33,18 @@ RUN chmod -R 775 storage bootstrap/cache
 # เปิด Port 8080 สำหรับ Railway
 EXPOSE 8080
 
+# Build frontend assets
+COPY --from=node /var/www/node_modules ./node_modules
+COPY --from=node /var/www/public ./public
+COPY --from=node /var/www/resources ./resources
+COPY --from=node /var/www/package.json ./package.json
+COPY --from=node /var/www/vite.config.js ./vite.config.js
+
+RUN npm install && npm run build
+
 RUN php artisan config:clear \
  && php artisan route:clear \
  && php artisan view:clear
-
-RUN npm install && npm run build
 
 # 🛠 แก้ตรงนี้เพื่อ serve public/
 CMD php -S 0.0.0.0:${PORT:-8080} -t public
