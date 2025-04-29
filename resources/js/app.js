@@ -35,12 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
         filter: "blur(10px)",
         duration: 2.2,
         ease: "power3.out",
-        onUpdate: function (self) {
-            const progress = self.progress;
-            gsap.set(".motion-h2", {
-                filter: `blur(${10 - progress * 10}px)` // ทำให้ blur หายตาม progress
-            });
+        onUpdate: function () {
+            if (this && typeof this.progress === 'function') {
+                const progress = this.progress();
+                gsap.set(".motion-h2", {
+                    filter: `blur(${10 - progress * 10}px)`
+                });
+            }
         }
+        
     })
 
         // 2. Animate P (scale up) ต่อจาก H2

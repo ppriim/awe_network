@@ -1,0 +1,41 @@
+{
+  "_effect-fade-B_prB0JH.css": {
+    "file": "assets/effect-fade-B_prB0JH.css",
+    "src": "_effect-fade-B_prB0JH.css"
+  },
+  "_effect-fade-D5Fd7sWo.js": {
+    "file": "assets/effect-fade-D5Fd7sWo.js",
+    "name": "effect-fade",
+    "css": [
+      "assets/effect-fade-B_prB0JH.css"
+    ]
+  },
+  "resources/css/about.css": {
+    "file": "assets/about-rkka0p3l.css",
+    "src": "resources/css/about.css",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-sGmfyULg.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/about.js": {
+    "file": "assets/about-BVqB1bju.js",
+    "name": "about",
+    "src": "resources/js/about.js",
+    "isEntry": true,
+    "imports": [
+      "_effect-fade-D5Fd7sWo.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CWuIokje.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_effect-fade-D5Fd7sWo.js"
+    ]
+  }
+}
