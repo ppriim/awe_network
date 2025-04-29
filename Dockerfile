@@ -34,4 +34,4 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 8080
 
 # คำสั่งให้รัน php artisan serve
-CMD php artisan serve --host=0.0.0.0 --port=8080
+CMD php artisan serve --host=0.0.0.0 --port=8080 --public /var/www/public
