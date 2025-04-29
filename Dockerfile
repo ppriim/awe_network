@@ -37,6 +37,7 @@ RUN php artisan config:clear \
  && php artisan route:clear \
  && php artisan view:clear
 
-RUN touch database/database.sqlite
+RUN npm install && npm run build
+
 # 🛠 แก้ตรงนี้เพื่อ serve public/
 CMD php -S 0.0.0.0:${PORT:-8080} -t public
