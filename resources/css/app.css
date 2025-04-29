@@ -147,15 +147,11 @@ body::-webkit-scrollbar {
     display: block;
 }
 
-/* section 5 */
-.testimonial-button-prev::after,
-.testimonial-button-next::after {
-    font-size: 20px !important;
-    color: #112250 !important;
-}
 
+/* Testimonials Section */
 .testimonial-swiper {
     height: 430px;
+    position: relative;
 }
 
 .testimonial-swiper video {
@@ -164,11 +160,39 @@ body::-webkit-scrollbar {
     object-fit: contain;
 }
 
-.testimonial-pagination .swiper-pagination-bullet {
+/* Navigation Buttons */
+.testimonial-swiper .swiper-button-prev,
+.testimonial-swiper .swiper-button-next {
+    all: unset;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    font-size: 28px;
+    color: #112250;
+    cursor: pointer;
+}
+
+.testimonial-swiper .swiper-button-prev::after,
+.testimonial-swiper .swiper-button-next::after {
+    font-size: 28px;
+    color: #112250;
+}
+
+/* Pagination Dots */
+.testimonial-swiper .swiper-pagination {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.testimonial-swiper .swiper-pagination .swiper-pagination-bullet {
     background: #112250;
     opacity: 0.4;
 }
 
-.testimonial-pagination .swiper-pagination-bullet-active {
+.testimonial-swiper .swiper-pagination .swiper-pagination-bullet-active {
     opacity: 1;
 }

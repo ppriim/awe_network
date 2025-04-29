@@ -32,12 +32,13 @@
         {{-- เนื้อหาที่ scroll ผ่าน --}}
         <div class="relative z-20 flex items-center justify-center h-screen px-4 text-white text-center">
             <div class="space-y-8 max-w-5xl">
-                
-                <h2 class="motion-h2 text-2xl md:text-4xl font-semibold leading-snug" style="font-family: 'Playfair', serif;">
+
+                <h2 class="motion-h2 text-2xl md:text-4xl font-semibold leading-snug"
+                    style="font-family: 'Playfair', serif;">
                     "Create unforgettable experiences with awesome,<br>
                     your one-stop event planning solution from start to finish."
                 </h2>
-        
+
                 <p class="motion-p text-sm md:text-lg text-gray-100 max-w-4xl mx-auto leading-relaxed whitespace-pre-line"
                     style="font-family: 'IBM Plex Sans Thai', sans-serif;">
                     “เบื้องหลังอีเวนต์ที่ประสบความสำเร็จ... ไม่ได้มาจากความบังเอิญ” แต่คือความใส่ใจในทุกขั้นตอน
@@ -49,10 +50,10 @@
                     พร้อมที่จะเป็น “พาร์ทเนอร์ที่ไว้ใจได้” ในการจัดอีเวนต์ครั้งต่อไปของคุณ
                     ปรึกษาเราฟรี พร้อมสร้างสรรค์ช่วงเวลาที่ประทับใจ
                 </p>
-        
+
             </div>
         </div>
-        
+
     </div>
 
     {{-- ✅ SECTION 3: Our Customers (สูง 100px + ปรับตำแหน่ง + scale icon) --}}
@@ -132,46 +133,47 @@
     </section>
 
 
-    <section class="relative z-50 bg-[#D9CBC2] px-6 py-0 text-[#112250] overflow-hidden flex items-center" style="max-height: 430px;">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full h-full">
-    
+    {{-- 🟦 SECTION 5: Testimonial --}}
+    <section class="relative z-50 bg-[#D9CBC2] px-6 py-0 text-[#112250] overflow-hidden flex items-center"
+        style="max-height: 430px;">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full h-full relative">
+
             {{-- Left: Heading --}}
-            <div class="w-full md:w-2/5 text-left flex flex-col justify-center h-full">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Playfair', serif;">
+            <div class="w-full md:w-2/5 flex flex-col items-start justify-start h-[430px] pt-6 md:pt-10">
+                <h2 class="text-2xl md:text-4xl font-bold mb-2" style="font-family: 'Playfair', serif;">
                     What people say..
                 </h2>
-                <p class="text-gray-600 text-sm md:text-base">
+                <p class="text-xs md:text-base max-w-xs leading-relaxed"
+                    style="font-family: 'IBM Plex Sans Thai', sans-serif; font-weight: 200;">
                     Discover what our satisfied customers have to say about their experiences with our products/services.
                 </p>
             </div>
-    
+
             {{-- Center: Swiper Videos --}}
             <div class="w-full md:w-3/5 flex items-center justify-center h-full relative">
-                <div class="swiper testimonial-swiper w-full h-full">
+                <div class="swiper testimonial-swiper w-full h-full relative">
                     <div class="swiper-wrapper h-full">
                         @php
                             $videos = File::files(public_path('videos/testimonials'));
                         @endphp
-    
                         @foreach ($videos as $video)
                             <div class="swiper-slide flex items-center justify-center h-full">
                                 <video src="{{ asset('videos/testimonials/' . $video->getFilename()) }}"
-                                    class="h-full w-auto object-contain cursor-pointer testimonial-video"
-                                    autoplay muted playsinline loop></video>
+                                    class="h-full w-auto object-contain cursor-pointer testimonial-video" autoplay muted
+                                    playsinline loop></video>
                             </div>
                         @endforeach
                     </div>
-    
-                    {{-- Navigation --}}
-                    <div class="testimonial-button-prev absolute left-0 top-1/2 -translate-y-1/2 text-[#112250] w-8 h-8"></div>
-                    <div class="testimonial-button-next absolute right-0 top-1/2 -translate-y-1/2 text-[#112250] w-8 h-8"></div>
-    
-                    {{-- Pagination --}}
-                    <div class="testimonial-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-20"></div>
+                    {{-- Navigation ลูกศร (อยู่ขอบจอ ซ้าย-ขวา) --}}
+                    <div class="swiper-button-prev fixed left-2 top-1/2 -translate-y-1/2 z-50"></div>
+                    <div class="swiper-button-next fixed right-2 top-1/2 -translate-y-1/2 z-50"></div>
+
+                    {{-- Pagination (Dot ทับวีดีโอกลางล่าง) --}}
+                    <div class="swiper-pagination absolute bottom-4 left-1/2 -translate-x-1/2 z-20"></div>
                 </div>
             </div>
-    
+
         </div>
+
     </section>
-    
 @endsection

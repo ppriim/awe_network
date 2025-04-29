@@ -23,33 +23,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // ตั้ง Timeline สำหรับ h2 และ p
     const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".motion-h2",
-          start: "top 80%",
-          toggleActions: "play none none none",
+            trigger: ".motion-h2",
+            start: "top 80%",
+            toggleActions: "play none none none",
         }
-      });
-  
-      // 1. Animate H2 (fade + blur)
-      tl.from(".motion-h2", {
-          opacity: 0,
-          filter: "blur(10px)",
-          duration: 2.2,
-          ease: "power3.out",
-          onUpdate: function(self) {
-              const progress = self.progress;
-              gsap.set(".motion-h2", {
-                  filter: `blur(${10 - progress * 10}px)` // ทำให้ blur หายตาม progress
-              });
-          }
-      })
-  
-      // 2. Animate P (scale up) ต่อจาก H2
-      .from(".motion-p", {
-          opacity: 0,
-          scale: 0.8,
-          duration: 2,
-          ease: "power3.out"
-      });
+    });
+
+    // 1. Animate H2 (fade + blur)
+    tl.from(".motion-h2", {
+        opacity: 0,
+        filter: "blur(10px)",
+        duration: 2.2,
+        ease: "power3.out",
+        onUpdate: function (self) {
+            const progress = self.progress;
+            gsap.set(".motion-h2", {
+                filter: `blur(${10 - progress * 10}px)` // ทำให้ blur หายตาม progress
+            });
+        }
+    })
+
+        // 2. Animate P (scale up) ต่อจาก H2
+        .from(".motion-p", {
+            opacity: 0,
+            scale: 0.8,
+            duration: 2,
+            ease: "power3.out"
+        });
 
     // Swiper ของ Section 3
     const swiper = new Swiper('.our-customers-tab', {
@@ -88,21 +88,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Swiper ของ Section 5: Testimonials
-    new Swiper('.testimonial-swiper', {
+    const testimonial = new Swiper('.testimonial-swiper', {
         loop: false,
         slidesPerView: 1,
         centeredSlides: true,
         grabCursor: true,
-        navigation: {
-            nextEl: '.testimonial-button-next',
-            prevEl: '.testimonial-button-prev',
-        },
         pagination: {
             el: '.testimonial-pagination',
             clickable: true,
         },
+        navigation: {
+            nextEl: '.testimonial-button-next',
+            prevEl: '.testimonial-button-prev',
+        },
     });
 
+    const section5 = document.querySelector('.testimonial-swiper');
+    const videos = document.querySelectorAll('.testimonial-video');
+
+    if (section5 && videos.length > 0) {
+        // 🛑 ตัวแปรสถานะว่าผู้ใช้กดหยุดไหม
+        let isUserPaused = false;
+
+        // ✅ Observer ตรวจว่า scroll เกิน 40% หรือไม่
+        let observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+                    if (!isUserPaused) {
+                        videos.forEach(video => {
+                            video.play(); // เล่นเฉพาะถ้าไม่ได้กด pause เอง
+                        });
+                    }
+                } else {
+                    videos.forEach(video => {
+                        video.pause();
+                    });
+                }
+            });
+        }, {
+            threshold: [0, 0.4, 1]
+        });
+
+        observer.observe(section5);
+
+        // ✅ คลิกวีดีโอ toggle เล่น/หยุด และตั้งสถานะ isUserPaused
+        videos.forEach(video => {
+            video.addEventListener('click', function () {
+                if (video.paused) {
+                    video.play();
+                    isUserPaused = false; // คลิกเล่น ➔ ไม่ถือว่ากด pause แล้ว
+                } else {
+                    video.pause();
+                    isUserPaused = true;  // คลิกหยุด ➔ ห้าม auto-play อีก
+                }
+            });
+        });
+    }
 });
 
 
