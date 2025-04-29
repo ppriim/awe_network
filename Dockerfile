@@ -33,6 +33,5 @@ RUN chmod -R 775 storage bootstrap/cache
 # เปิด Port 8080 สำหรับ Railway
 EXPOSE 8080
 
-# คำสั่งให้รัน php artisan serve
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
-
+# 🛠 แก้ตรงนี้เพื่อ serve public/
+CMD php -S 0.0.0.0:${PORT:-8080} -t public
