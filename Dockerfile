@@ -1,5 +1,5 @@
 # ใช้ PHP official image
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
 # ติดตั้ง system dependencies และ PHP extensions ที่ Laravel ต้องใช้
 RUN apt-get update && apt-get install -y \
