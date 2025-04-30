@@ -15,7 +15,7 @@
     @vite(['resources/css/about.css', 'resources/js/about.js'])
 
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased opacity-80 transition-opacity duration-700 delay-200">
     <header class="relative z-100">
         @include('partials.hambar')
     </header>
@@ -30,6 +30,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+        document.addEventListener('DOMContentLoaded', function () {
+            const page = document.getElementById('page-content') || document.body;
+            page.classList.remove('opacity-0');
+            page.classList.add('opacity-100');
+        });
     </script>
 </body>
 </html>

@@ -31,7 +31,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+        document.addEventListener('DOMContentLoaded', function () {
+            const page = document.getElementById('page-content') || document.body;
+            page.classList.remove('opacity-0');
+            page.classList.add('opacity-100');
+        });
     </script>
 </body>
-
 </html>

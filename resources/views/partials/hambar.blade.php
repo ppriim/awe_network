@@ -23,11 +23,11 @@
 
 
     {{-- เมนูรายการ --}}
-    <nav class="flex flex-col space-y-8 text-left w-full" style="font-family: 'Cormorant', serif;">
-        <a href="/" class="text-2xl font-semibold text-gray-800 hover:text-gray-500">Home</a>
-        <a href="/about" class="text-2xl font-semibold text-gray-800 hover:text-gray-500">About Us</a>
-        <a href="/services" class="text-2xl font-semibold text-gray-800 hover:text-gray-500">Services</a>
-        <a href="/contact" class="text-2xl font-semibold text-gray-800 hover:text-gray-500">Contact</a>
+    <nav class="flex flex-col space-y-8 text-left w-full" style="font-family: 'Cormorant', light;">
+        <a href="/" class="text-2xl text-[#112250] hover:text-[#83899D]">Home</a>
+        <a href="/about" class="text-2xl text-[#112250] hover:text-[#83899D]">About Us</a>
+        <a href="/services" class="text-2xl text-[#112250] hover:text-[#83899D]">Services</a>
+        <a href="/contact" class="text-2xl text-[#112250] hover:text-[#83899D]">Contact</a>
     </nav>
 
 </div>
