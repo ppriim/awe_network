@@ -49,14 +49,13 @@
         </div>
     </section>
 
-    <!-- SECTION 3: AWESOME CARDS (หมุน 3D พร้อมกันตามเมาส์) -->
+    <!-- SECTION 3: AWESOME CARDS (Smooth RotateY ตามเมาส์) -->
     <section id="awesome-section" class="relative w-full py-24 overflow-hidden"
         style="background-image: url('{{ asset('images/about/awesome/bg_awe.avif') }}'); background-size: cover; background-position: center;">
         <div class="relative z-10 max-w-7xl mx-auto px-4">
-            <div id="awesome-gallery" class="flex justify-center items-center gap-6 perspective-wrapper">
+            <div class="flex justify-center items-center gap-6 perspective-wrapper">
                 @for ($i = 1; $i <= 7; $i++)
-                    <div
-                        class="card w-40 sm:w-48 md:w-52 lg:w-56 xl:w-60 bg-white transition-transform duration-300 will-change-transform">
+                    <div class="card w-36 sm:w-44 md:w-48 lg:w-52 xl:w-56 bg-white rounded-lg overflow-hidden">
                         <img src="{{ asset("images/about/awesome/2-0$i.png") }}"
                             class="w-full h-full object-cover pointer-events-none" />
                     </div>
@@ -64,6 +63,7 @@
             </div>
         </div>
     </section>
+
 
 
 

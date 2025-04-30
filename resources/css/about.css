@@ -20,6 +20,5 @@
 
 .card {
   transform-style: preserve-3d;
-  transition: transform 0.2s ease;
   will-change: transform;
 }

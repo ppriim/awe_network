@@ -11,17 +11,17 @@
     ]
   },
   "resources/css/about.css": {
-    "file": "assets/about-rkka0p3l.css",
+    "file": "assets/about-f5xwXPKZ.css",
     "src": "resources/css/about.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-sGmfyULg.css",
+    "file": "assets/app-BuAWmbqg.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/about.js": {
-    "file": "assets/about-BVqB1bju.js",
+    "file": "assets/about-COdoggkc.js",
     "name": "about",
     "src": "resources/js/about.js",
     "isEntry": true,
