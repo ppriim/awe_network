@@ -36,27 +36,28 @@
     </section>
 
     <!-- SECTION 2: STORY BLOCK -->
-    <section class="bg-[#112250] text-[#D9CBC2] flex items-center justify-center px-6 py-14 max-h-[563px]">
+    <section
+        class="bg-[#112250] text-[#D9CBC2] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 max-h-[563px]">
         <div id="story-block"
-        class="max-w-7xl text-center leading-relaxed opacity-0 scale-75 blur-sm transition-all duration-1200"
-        style="font-family: 'Prompt', sans-serif;">
-            <p>
+            class="opacity-0 scale-75 blur-sm transition-all duration-1000 max-w-3xl sm:max-w-4xl lg:max-w-5xl text-sm sm:text-base leading-loose sm:leading-relaxed text-center"
+            style="font-family: 'Prompt', sans-serif;">
+            <p class="mb-4">
                 ก่อตั้งขึ้นในวันที่ 19 กรกฎาคม พ.ศ. 2547
                 ด้วยความตั้งใจแน่วแน่ที่จะเปลี่ยนทุกช่วงเวลาสำคัญให้กลายเป็นประสบการณ์ที่หรูหรา มีชีวิต
                 และน่าประทับใจเหนือความคาดหมายที่ Awesome Network Thailand
                 เราเชื่อว่าศิลปะแห่งการจัดอีเวนต์ไม่ใช่เพียงการสร้างบรรยากาศ
                 แต่คือการถักทอเรื่องราว ผ่านรายละเอียดที่ประณีต การดีไซน์ที่ล้ำสมัย
-                และการบริการที่เข้าใจความต้องการของลูกค้าในทุกมิติ ตลอดสองทศวรรษที่ผ่านมา เราสร้างสรรค์งานที่ผสมผสาน
-                ความหรูหราเข้ากับ ความทันสมัย อย่างลงตัว — ทุกโครงการสะท้อนตัวตนที่ไม่เหมือนใคร
-                และมุ่งเน้นประสบการณ์ที่เหนือความคาดหมายในทุกช่วงเวลา เพราะสำหรับเรา
-                การจัดงานอีเวนต์ที่สมบูรณ์แบบไม่ใช่เพียงเรื่องของความสวยงามที่มองเห็นได้ แต่คือการสร้าง “ประสบการณ์”
-                ที่สัมผัสได้จากหัวใจ
+                และการบริการที่เข้าใจความต้องการของลูกค้าในทุกมิติ
             </p>
             <p>
-                Awesome Network Thailand — Crafting Moments. Creating Legacy.
+                ตลอดสองทศวรรษที่ผ่านมา เราสร้างสรรค์งานที่ผสมผสานความหรูหราเข้ากับความทันสมัยอย่างลงตัว
+                ทุกโครงการสะท้อนตัวตนที่ไม่เหมือนใคร และมุ่งเน้นประสบการณ์ที่เหนือความคาดหมายในทุกช่วงเวลา
+                เพราะสำหรับเรา การจัดงานอีเวนต์ที่สมบูรณ์แบบไม่ใช่เพียงเรื่องของความสวยงามที่มองเห็นได้
+                แต่คือการสร้าง “ประสบการณ์” ที่สัมผัสได้จากหัวใจ
             </p>
         </div>
     </section>
+
 
     <!-- SECTION 3: AWESOME CARDS (Smooth RotateY ตามเมาส์) -->
     <section id="awesome-section" class="relative w-full py-24 overflow-hidden"
@@ -76,22 +77,19 @@
     <!-- SECTION 4: p’ Bee -->
     <section id="section-pbee" class="relative w-full max-h-[490px] overflow-hidden bg-cover bg-center text-white"
         style="background-image: url('{{ asset('images/about/team/bg_bg.png') }}');">
-
-        <div class="relative z-10 max-w-7xl mx-auto flex items-center justify-center gap-8 px-4 py-12 lg:py-0">
+        <div
+            class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 px-4 py-12 lg:py-0">
 
             <!-- กล่องรูปพี่บี + ป้ายชื่อ -->
-            <div class="relative flex-shrink-0 -translate-x-22">
-                <!-- รูปพี่บี -->
+            <div class="relative flex-shrink-0 -translate-x-2 lg:-translate-x-6">
                 <img src="{{ asset('images/about/team/pb.png') }}" id="bee-image"
-                    class="relative z-15 max-h-[470px] opacity-0 blur-sm transition-all duration-1000 delay-[1000ms]" />
-
-                <!-- ป้ายชื่อ (วางตรงขา) -->
+                    class="relative z-15 max-h-[470px] w-[220px] sm:w-[260px] md:w-[300px] lg:w-auto opacity-0 blur-sm transition-all duration-1000 delay-[1000ms]" />
                 <img src="{{ asset('images/about/team/name_pb.png') }}" id="bee-name"
-                    class="max-h-[150px] max-w-[350px] absolute bottom-4 right-[-130%] top-[77%] -translate-x-1/2 opacity-0 scale-110 transition-all duration-700 delay-[600ms]" />
+                    class="absolute bottom-4 right-[-130%] top-[77%] -translate-x-1/2 w-[200px] sm:w-[260px] opacity-0 scale-110 transition-all duration-700 delay-[600ms]" />
             </div>
 
             <!-- ข้อความ -->
-            <div class="flex flex-col items-center lg:items-start text-center space-y-6 max-w-md -translate-x-35"
+            <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 max-w-md sm:max-w-lg -translate-x-2 lg:-translate-x-6"
                 style="font-family: 'Prompt', light;">
                 <p id="bee-text"
                     class="text-xs sm:text-sm opacity-0 scale-110 transition-all duration-700 delay-[0ms] leading-7">
@@ -104,17 +102,25 @@
                     เพราะ ​"Awesome​" คือ ยอดเยี่ยม ดีเลิศ น่าประทับใจอย่างมาก
                 </p>
             </div>
+
         </div>
     </section>
-
     <!-- SECTION 5: p’ Krit -->
     <section id="section-pkrit" class="relative w-full max-h-[490px] overflow-hidden bg-cover bg-center text-white"
         style="background-image: url('{{ asset('images/about/team/bg_bg.png') }}');">
+        <div
+            class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center justify-center gap-8 px-4 py-12 lg:py-0">
 
-        <div class="relative z-10 max-w-7xl mx-auto flex items-center justify-center gap-8 px-4 py-12 lg:py-0">
+            <!-- กล่องรูปพี่กฤษ + ป้ายชื่อ -->
+            <div class="relative flex-shrink-0 translate-x-2 lg:translate-x-6">
+                <img src="{{ asset('images/about/team/pk.png') }}" id="krit-image"
+                    class="relative z-15 max-h-[470px] w-[220px] sm:w-[260px] md:w-[300px] lg:w-auto opacity-0 blur-sm transition-all duration-1000 delay-[1000ms]" />
+                <img src="{{ asset('images/about/team/name_pk.png') }}" id="krit-name"
+                    class="absolute bottom-4 left-[-130%] top-[77%] -translate-x-1/2 w-[200px] sm:w-[260px] opacity-0 scale-110 transition-all duration-700 delay-[600ms]" />
+            </div>
 
             <!-- ข้อความ -->
-            <div class="flex flex-col items-center lg:items-end text-center space-y-6 max-w-md translate-x-36"
+            <div class="flex flex-col items-center lg:items-end text-center lg:text-right space-y-6 max-w-md sm:max-w-lg translate-x-2 lg:translate-x-6"
                 style="font-family: 'Prompt', light;">
                 <p id="krit-text"
                     class="text-xs sm:text-sm opacity-0 scale-110 transition-all duration-700 delay-[0ms] leading-7">
@@ -128,18 +134,7 @@
                 </p>
             </div>
 
-            <!-- กล่องรูปพี่กฤษ + ป้ายชื่อ -->
-            <div class="relative flex-shrink-0 translate-x-20">
-                <!-- รูปพี่กฤษ -->
-                <img src="{{ asset('images/about/team/pk.png') }}" id="krit-image"
-                    class="relative z-15 max-h-[470px] opacity-0 blur-sm transition-all duration-1000 delay-[1000ms]" />
-
-                <!-- ป้ายชื่อ -->
-                <img src="{{ asset('images/about/team/name_pk.png') }}" id="krit-name"
-                    class="max-h-[150px] max-w-[350px] absolute bottom-4 left-[-18%] top-[80%] -translate-x-1/2 opacity-0 scale-110 transition-all duration-700 delay-[600ms]" />
-            </div>
         </div>
     </section>
-
 
 @endsection
