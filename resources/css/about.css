@@ -14,6 +14,17 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE10+, Edge */
+  overflow-x: hidden; /* ป้องกันแนวนอน */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 .perspective-wrapper {
   perspective: 1000px;
 }
