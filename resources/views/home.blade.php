@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('title', 'Home')
 
+@php
+    use Illuminate\Support\Facades\File;
+
+    // 🔧 เช็กโฟลเดอร์ภาพก่อน
+    $imagePath = public_path('images/home');
+    $images = File::exists($imagePath) ? File::files($imagePath) : [];
+
+    // 🔧 เช็กโฟลเดอร์วิดีโอก่อน
+    $videoPath = public_path('videos/testimonials');
+    $videos = File::exists($videoPath) ? File::files($videoPath) : [];
+@endphp
+
 @section('content')
     {{-- 🎬 Hero Section --}}
     <div class="relative z-[50] w-full h-screen overflow-hidden" id="hero">
@@ -120,9 +132,6 @@
 
         <div class="track-wrapper mx-auto">
             <ul class="track">
-                @php
-                    $images = File::files(public_path('images/home'));
-                @endphp
                 @foreach ($images as $image)
                     <li class="track__item">
                         <img src="{{ asset('images/home/' . $image->getFilename()) }}" alt="Work Image" loading="lazy"
@@ -154,9 +163,6 @@
             <div class="w-full md:w-3/5 flex items-center justify-center h-full relative">
                 <div class="swiper testimonial-swiper w-full h-full relative">
                     <div class="swiper-wrapper h-full">
-                        @php
-                            $videos = File::files(public_path('videos/testimonials'));
-                        @endphp
                         @foreach ($videos as $video)
                             <div class="swiper-slide flex items-center justify-center h-full">
                                 <video src="{{ asset('videos/testimonials/' . $video->getFilename()) }}"
