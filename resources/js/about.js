@@ -15,19 +15,91 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const fadeEls = document.querySelectorAll('.scroll-fadein');
-  const observer = new IntersectionObserver(entries => {
+  // hero section
+  const title = document.getElementById('about-hero-title');
+  const desc = document.getElementById('about-hero-desc');
+
+  const heroObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('opacity-100', 'translate-y-0');
+        title.classList.remove('opacity-0', 'scale-150');
+        title.classList.add('opacity-100', 'scale-100');
+
+        desc.classList.remove('opacity-0', 'scale-70');
+        desc.classList.add('opacity-100', 'scale-100');
       }
     });
   }, { threshold: 0.3 });
 
-  fadeEls.forEach(el => {
-    el.classList.add('opacity-0', 'translate-y-4', 'transition', 'duration-700');
-    observer.observe(el);
-  });
+  heroObserver.observe(title);
+
+  const story = document.getElementById('story-block');
+
+  // section 2
+  const storyObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        story.classList.remove('opacity-0', 'scale-75', 'blur-sm');
+        story.classList.add('opacity-100', 'scale-100', 'blur-0');
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  storyObserver.observe(story);
+  
+
+  // section 4
+  const text = document.getElementById('bee-text');
+  const name = document.getElementById('bee-name');
+  const image = document.getElementById('bee-image');
+
+  const beeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        text.classList.remove('opacity-0', 'scale-110');
+        text.classList.add('opacity-100', 'scale-100');
+
+        setTimeout(() => {
+          name.classList.remove('opacity-0', 'scale-110');
+          name.classList.add('opacity-100', 'scale-100');
+        }, 300);
+
+        setTimeout(() => {
+          image.classList.remove('opacity-0', 'blur-sm');
+          image.classList.add('opacity-100', 'blur-0');
+        }, 700);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  beeObserver.observe(text);
+
+  //section 5
+  const kritText = document.getElementById('krit-text');
+  const kritName = document.getElementById('krit-name');
+  const kritImage = document.getElementById('krit-image');
+
+  const kritObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        kritText.classList.remove('opacity-0', 'scale-110');
+        kritText.classList.add('opacity-100', 'scale-100');
+
+        setTimeout(() => {
+          kritName.classList.remove('opacity-0', 'scale-110');
+          kritName.classList.add('opacity-100', 'scale-100');
+        }, 300);
+
+        setTimeout(() => {
+          kritImage.classList.remove('opacity-0', 'blur-sm');
+          kritImage.classList.add('opacity-100', 'blur-0');
+        }, 700);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  kritObserver.observe(kritText);
+
 });
 
 // section 3
