@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return 'Laravel is working ✅';
+    return view('home');
 });
 
 Route::get('/about', function () {
