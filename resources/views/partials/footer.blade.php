@@ -6,8 +6,8 @@
         <div class="flex flex-col items-center md:items-end space-y-2">
             <a href="{{ url('/') }}" class="hover:underline">Home</a>
             <a href="{{ url('/about') }}" class="hover:underline">About Us</a>
-            <a href="{{ url('/services') }}" class="hover:underline">Our Services</a>
-            <a href="{{ url('/contact') }}" class="hover:underline">Contact Us</a>
+            <a href="{{ url('/') }}" class="hover:underline">Our Services</a>
+            <a href="{{ url('/') }}" class="hover:underline">Contact Us</a>
         </div>
 
     </div>
