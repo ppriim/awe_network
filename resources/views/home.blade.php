@@ -24,14 +24,14 @@
             Your browser does not support the video tag.
         </video>
 
-        {{-- Layer ข้อความบนวีดีโอ --}}
+        {{-- Layer ข้อความบนวีดีโอ 
         <div class="absolute inset-0 flex items-center justify-center z-10 bg-black/40 text-white text-center">
             <div class="max-w-4xl px-4">
                 <h1 class="text-3xl md:text-5xl font-bold leading-snug" data-aos="fade-up">
                     <!-- ใส่ข้อความ hero ตรงนี้ -->
                 </h1>
             </div>
-        </div>
+        </div>--}}
     </div>
 
 

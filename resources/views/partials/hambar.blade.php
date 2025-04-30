@@ -12,7 +12,7 @@
 
     {{-- ปุ่ม Close (อยู่ซ้าย) --}}
     <button id="hamburger-close" class="self-start text-gray-700 mb-8 focus:outline-none">
-        <svg class="h-8 w-8 stroke-current hover:stroke-blue-500 transform transition-transform duration-500 hover:rotate-[360deg]"
+        <svg class="h-8 w-8 stroke-current hover:stroke-blue-500 transform transition-transform duration-500 hover:rotate-[180deg]"
             fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
