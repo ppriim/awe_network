@@ -1,7 +1,22 @@
+# Stage 1: Build assets with Node
+FROM node:20 as node
+WORKDIR /var/www
+COPY . .
+RUN npm install && npm run build
+
+# Stage 2: PHP Laravel
 FROM php:8.2-cli
 
-# ติดตั้ง Laravel dependency
-RUN composer install --no-dev --optimize-autoloader
+# ติดตั้ง PHP extensions ที่ Laravel ใช้
+RUN apt-get update && apt-get install -y \
+    libpng-dev libjpeg-dev libfreetype6-dev zip unzip curl git \
+    libonig-dev libxml2-dev libzip-dev \
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+
+# ✅ ติดตั้ง Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www
 
 # ดึงไฟล์ที่ถูก build จาก stage node
 COPY --from=node /var/www/resources ./resources
@@ -15,15 +30,11 @@ COPY --from=node /var/www/public/build ./public/build
 # คัดลอก public จากโปรเจกต์จริง (รวม images/home, videos ฯลฯ)
 COPY public ./public
 
-# เคลียร์ config / cache
+# Laravel cleanup & permissions
 RUN php artisan config:clear \
  && php artisan route:clear \
- && php artisan view:clear
+ && php artisan view:clear \
+ && chmod -R 775 storage bootstrap/cache
 
-# เปิดสิทธิ์ storage
-RUN chmod -R 775 storage bootstrap/cache
-
-# เปิด port ให้ Railway
 EXPOSE 8080
-
 CMD php -S 0.0.0.0:8080 -t public
