@@ -42,13 +42,13 @@ COPY --from=node /var/www/vite.config.js ./vite.config.js
 # คัดลอก public จาก Node stage → เอาเฉพาะที่ต้อง build เช่น assets
 COPY --from=node /var/www/public/build ./public/build
 
-COPY .env.example .env
-
+# เคลียร์ config / cache
 RUN php artisan config:clear \
- && php artisan config:cache \
  && php artisan route:clear \
- && php artisan view:clear \
- && chmod -R 775 storage bootstrap/cache
+ && php artisan view:clear
+
+# เปิดสิทธิ์ storage
+RUN chmod -R 775 storage bootstrap/cache
 
 # เปิด port ให้ Railway
 EXPOSE 8080
