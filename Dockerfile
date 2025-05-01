@@ -21,9 +21,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-# ✅ คัดลอก composer ก่อน เพื่อให้ Docker cache ใช้ได้
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose
 
 # ✅ คัดลอกไฟล์โปรเจกต์ทั้งหมด
 COPY . .
@@ -36,9 +35,9 @@ COPY --from=node /var/www/vite.config.js ./vite.config.js
 COPY --from=node /var/www/package.json ./package.json
 
 # ✅ เคลียร์ cache และเปิด permission
-RUN php artisan config:clear \
- && php artisan route:clear \
- && php artisan view:clear \
+RUN php artisan config:cache \
+ && php artisan route:cache \
+ && php artisan view:cache \
  && chmod -R 775 storage bootstrap/cache
 
 # ✅ เปิดพอร์ตและรัน Laravel ผ่าน PHP Dev Server
