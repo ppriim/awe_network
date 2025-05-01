@@ -38,11 +38,12 @@ COPY --from=node /var/www/vite.config.js ./vite.config.js
 COPY --from=node /var/www/package.json ./package.json
 
 # ✅ Laravel cleanup + permission
-RUN php artisan config:clear || true && \
-    php artisan route:clear || true && \
-    php artisan view:clear || true && \
-    chmod -R 775 storage bootstrap/cache || true && \
-    cat storage/logs/laravel.log || true
+RUN set -e; \
+  php artisan view:clear && \
+  php artisan route:clear && \
+  php artisan config:clear && \
+  chmod -R 775 storage bootstrap/cache; \
+  true || cat storage/logs/laravel.log
 
 # ✅ เปิดพอร์ตและรัน Laravel ผ่าน PHP Dev Server
 EXPOSE 8080
