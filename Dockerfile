@@ -48,6 +48,8 @@ RUN echo "🧹 Laravel clearing caches..." && \
     echo "📄 Dumping Laravel log:" && \
     cat storage/logs/laravel.log || echo "No Laravel log yet"
 
+RUN cp public/build/.vite/manifest.json public/build/manifest.json
+
 # Open port 8080 for Railway
 EXPOSE 8080
 
