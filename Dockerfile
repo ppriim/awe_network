@@ -7,7 +7,7 @@ COPY resources ./resources
 COPY vite.config.js ./
 RUN npm run build
 
-# Stage 2: Laravel + PHP
+# Stage 2: PHP + Laravel
 FROM php:8.2-cli
 
 # ติดตั้ง PHP extensions ที่ Laravel ใช้
@@ -21,23 +21,23 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose
-
-# ✅ คัดลอกไฟล์โปรเจกต์ทั้งหมด
+# ✅ คัดลอกโค้ดทั้งหมด (รวม artisan)
 COPY . .
 
-# ✅ คัดลอกไฟล์ assets จาก Node stage
+# ✅ ติดตั้ง Laravel dependencies หลังมี artisan
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose
+
+# ✅ คัดลอก assets ที่ถูก build แล้ว
 COPY --from=node /var/www/public/build ./public/build
 COPY --from=node /var/www/node_modules ./node_modules
 COPY --from=node /var/www/resources ./resources
 COPY --from=node /var/www/vite.config.js ./vite.config.js
 COPY --from=node /var/www/package.json ./package.json
 
-# ✅ เคลียร์ cache และเปิด permission
-RUN php artisan config:cache \
- && php artisan route:cache \
- && php artisan view:cache \
+# ✅ Laravel cleanup + permission
+RUN php artisan config:clear \
+ && php artisan route:clear \
+ && php artisan view:clear \
  && chmod -R 775 storage bootstrap/cache
 
 # ✅ เปิดพอร์ตและรัน Laravel ผ่าน PHP Dev Server
