@@ -1,3 +1,6 @@
+# Stage 0: Get Composer
+FROM composer:latest as composer
+
 # Stage 1: Build frontend assets with Node
 FROM node:20 as node
 WORKDIR /var/www
