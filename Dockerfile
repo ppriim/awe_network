@@ -1,7 +1,7 @@
 # Stage 0: Get Composer
 FROM composer:latest as composer
 
-# Stage 1: Build frontend assets with Node
+# Stage 1: Build assets
 FROM node:20 as node
 WORKDIR /var/www
 COPY package*.json ./
@@ -10,40 +10,47 @@ COPY resources ./resources
 COPY vite.config.js ./
 RUN npm run build
 
-# Stage 2: PHP + Laravel
+# Stage 2: Laravel PHP
 FROM php:8.2-cli
 
-# ติดตั้ง PHP extensions ที่ Laravel ใช้
+# PHP Extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev zip unzip curl git \
     libonig-dev libxml2-dev libzip-dev \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
-# ติดตั้ง Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Copy Composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
+# Set working dir
 WORKDIR /var/www
 
-# ✅ คัดลอกโค้ดทั้งหมด (รวม artisan)
+# Copy Laravel app
 COPY . .
 
-# ✅ ติดตั้ง Laravel dependencies หลังมี artisan
-RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose \
+ || (echo "❌ Composer failed" && exit 1)
 
-# ✅ คัดลอก assets ที่ถูก build แล้ว
+# Copy built assets
 COPY --from=node /var/www/public/build ./public/build
 COPY --from=node /var/www/node_modules ./node_modules
 COPY --from=node /var/www/resources ./resources
 COPY --from=node /var/www/vite.config.js ./vite.config.js
 COPY --from=node /var/www/package.json ./package.json
 
-# ✅ Laravel cleanup + permission
-RUN php artisan view:clear || cat storage/logs/laravel.log && \
-    php artisan route:clear || cat storage/logs/laravel.log && \
-    php artisan config:clear || cat storage/logs/laravel.log && \
-    chmod -R 775 storage bootstrap/cache || cat storage/logs/laravel.log
+# Laravel setup: DEBUG MODE
+RUN echo "🧹 Laravel clearing caches..." && \
+    php artisan config:clear || true && \
+    php artisan route:clear || true && \
+    php artisan view:clear || true && \
+    chmod -R 775 storage bootstrap/cache || true && \
+    echo "📄 Dumping Laravel log:" && \
+    cat storage/logs/laravel.log || echo "No Laravel log yet"
 
-
-# ✅ เปิดพอร์ตและรัน Laravel ผ่าน PHP Dev Server
+# Open port 8080 for Railway
 EXPOSE 8080
-CMD php -S 0.0.0.0:8080 -t public
+
+# Start PHP Dev Server
+CMD echo "🚀 Starting Laravel Dev Server..." && \
+    php -S 0.0.0.0:8080 -t public
