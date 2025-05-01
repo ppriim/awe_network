@@ -39,6 +39,9 @@ COPY --from=node /var/www/resources ./resources
 COPY --from=node /var/www/vite.config.js ./vite.config.js
 COPY --from=node /var/www/package.json ./package.json
 
+# ✅ Fix: Vite manifest path
+RUN cp public/build/.vite/manifest.json public/build/manifest.json
+
 # Laravel setup: DEBUG MODE
 RUN echo "🧹 Laravel clearing caches..." && \
     php artisan config:clear || true && \
