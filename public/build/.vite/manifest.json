@@ -1,41 +1,41 @@
 {
-  "_effect-fade-B_prB0JH.css": {
-    "file": "assets/effect-fade-B_prB0JH.css",
-    "src": "_effect-fade-B_prB0JH.css"
-  },
-  "_effect-fade-D5Fd7sWo.js": {
-    "file": "assets/effect-fade-D5Fd7sWo.js",
+  "_effect-fade-Cgo2G61b.js": {
+    "file": "assets/effect-fade-Cgo2G61b.js",
     "name": "effect-fade",
     "css": [
-      "assets/effect-fade-B_prB0JH.css"
+      "assets/effect-fade-DBiqCm1T.css"
     ]
   },
+  "_effect-fade-DBiqCm1T.css": {
+    "file": "assets/effect-fade-DBiqCm1T.css",
+    "src": "_effect-fade-DBiqCm1T.css"
+  },
   "resources/css/about.css": {
-    "file": "assets/about-7WvCRVGW.css",
+    "file": "assets/about-CvMEl4mG.css",
     "src": "resources/css/about.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-BgHYbbiF.css",
+    "file": "assets/app-BZgayW2C.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/about.js": {
-    "file": "assets/about-DjSNIkbX.js",
+    "file": "assets/about-BM97sMBY.js",
     "name": "about",
     "src": "resources/js/about.js",
     "isEntry": true,
     "imports": [
-      "_effect-fade-D5Fd7sWo.js"
+      "_effect-fade-Cgo2G61b.js"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CWuIokje.js",
+    "file": "assets/app-j5CKqaaR.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_effect-fade-D5Fd7sWo.js"
+      "_effect-fade-Cgo2G61b.js"
     ]
   }
 }

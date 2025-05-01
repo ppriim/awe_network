@@ -42,9 +42,6 @@ COPY --from=node /var/www/vite.config.js ./vite.config.js
 # คัดลอก public จาก Node stage → เอาเฉพาะที่ต้อง build เช่น assets
 COPY --from=node /var/www/public/build ./public/build
 
-# คัดลอก public จากโปรเจกต์จริง (รวม images/home, videos ฯลฯ)
-COPY public ./public
-
 # เคลียร์ config / cache
 RUN php artisan config:clear \
  && php artisan route:clear \

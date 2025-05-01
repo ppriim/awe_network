@@ -1,9 +1,8 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite'
+import laravel from 'laravel-vite-plugin'
 
 export default defineConfig({
-    base: '/build/', // 🔧 ✅ เพิ่มบรรทัดนี้
+    base: '/build/',
     plugins: [
         laravel({
             input: [
@@ -14,10 +13,17 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        tailwindcss(),
     ],
     build: {
         manifest: true,
         outDir: 'public/build',
+        emptyOutDir: true,
+        rollupOptions: {
+            output: {
+                entryFileNames: 'assets/[name]-[hash].js',
+                chunkFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash].[ext]',
+            },
+        },
     },
-});
+})
